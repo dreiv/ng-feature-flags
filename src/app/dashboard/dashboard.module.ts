@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @NgModule({
   declarations: [],
@@ -11,7 +12,11 @@ import { DashboardComponent } from './dashboard.component';
     RouterModule.forChild([
       {
         path: '',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          flags: ['a', 'b']
+        }
       }
     ])
   ]

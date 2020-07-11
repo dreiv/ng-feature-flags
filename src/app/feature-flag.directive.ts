@@ -5,7 +5,7 @@ import {
   TemplateRef,
   OnInit
 } from '@angular/core';
-import { UserStoreService } from './user-store.service';
+import { UserStoreService } from './services/user-store.service';
 
 @Directive({
   selector: '[featureFlag]'

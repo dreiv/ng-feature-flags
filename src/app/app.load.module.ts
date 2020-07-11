@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 
 function preloadUser(userService: UserService) {
   return () => userService.getUser().toPromise();
