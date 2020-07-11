@@ -12,6 +12,7 @@ import { UserStoreService } from './user-store.service';
 })
 export class FeatureFlagDirective implements OnInit {
   @Input() featureFlag: string | string[];
+  @Input() featureFlagOr = '';
 
   constructor(
     private vcr: ViewContainerRef,
@@ -20,7 +21,10 @@ export class FeatureFlagDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (this.store.hasFlags(this.featureFlag)) {
+    if (
+      this.store.hasFlags(this.featureFlag) ||
+      this.store.hasFlags(this.featureFlagOr)
+    ) {
       this.vcr.createEmbeddedView(this.tpl);
     }
   }
