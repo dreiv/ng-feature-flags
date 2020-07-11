@@ -10,13 +10,8 @@ export function preloadUser(userService: UserService) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeatureFlagDirective
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, FeatureFlagDirective],
+  imports: [BrowserModule],
   providers: [
     {
       provide: APP_INITIALIZER,
@@ -27,4 +22,4 @@ export function preloadUser(userService: UserService) {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

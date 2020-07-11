@@ -8,8 +8,7 @@ import { UserStoreService } from './user-store.service';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private userStore: UserStoreService) { }
+  constructor(private userStore: UserStoreService) {}
 
   getUser() {
     const fakeUser = {
@@ -22,7 +21,7 @@ export class UserService {
 
     return timer(300).pipe(
       mapTo(fakeUser),
-      tap(user => this.userStore.update(user))
+      tap((user) => this.userStore.update(user))
     );
   }
 }
