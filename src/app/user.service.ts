@@ -6,7 +6,7 @@ import { UserStoreService } from './user-store.service';
 
 export interface User {
   name: string;
-  featureFlag: Record<string, boolean>;
+  featureFlags: Record<string, boolean>;
 }
 
 @Injectable({
@@ -18,7 +18,7 @@ export class UserService {
   getUser(): Observable<User> {
     const fakeUser: User = {
       name: 'drei',
-      featureFlag: {
+      featureFlags: {
         a: true,
         b: false
       }

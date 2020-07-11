@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppLoadModule } from './app.load.module';
+import { FeatureFlagDirective } from './feature-flag.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, FeatureFlagDirective],
   imports: [AppLoadModule, BrowserModule],
   bootstrap: [AppComponent]
 })

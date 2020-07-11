@@ -22,4 +22,15 @@ export class UserStoreService {
   getUser(): User | null {
     return this.user.getValue();
   }
+
+  hasFlags(values: string | string[]): boolean {
+    const featureFlags = this.getUser()?.featureFlags;
+    const flags: string[] = ([] as string[]).concat(values);
+
+    return featureFlags
+      ? Object.entries(featureFlags).some(([key, value]) =>
+          flags.some((flag) => key === flag && value)
+        )
+      : false;
+  }
 }
