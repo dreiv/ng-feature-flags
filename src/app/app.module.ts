@@ -1,25 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UserService } from './user.service';
-import { FeatureFlagDirective } from './feature-flag.directive';
-
-export function preloadUser(userService: UserService) {
-  return () => userService.getUser().toPromise();
-}
+import { AppLoadModule } from './app.load.module';
 
 @NgModule({
-  declarations: [AppComponent, FeatureFlagDirective],
-  imports: [BrowserModule],
-  providers: [
-    {
-      provide: APP_INITIALIZER,
-      multi: true,
-      useFactory: preloadUser,
-      deps: [UserService]
-    }
-  ],
+  declarations: [AppComponent],
+  imports: [AppLoadModule, BrowserModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

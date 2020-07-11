@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { timer } from 'rxjs';
+import { timer, Observable } from 'rxjs';
 import { mapTo, tap } from 'rxjs/operators';
 
 import { UserStoreService } from './user-store.service';
+
+export interface User {
+  name: string;
+  featureFlag: Record<string, boolean>;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +15,8 @@ import { UserStoreService } from './user-store.service';
 export class UserService {
   constructor(private userStore: UserStoreService) {}
 
-  getUser() {
-    const fakeUser = {
+  getUser(): Observable<User> {
+    const fakeUser: User = {
       name: 'drei',
       featureFlag: {
         a: true,
