@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ProtectedComponent } from './protected/protected.component';
+import { CustomPreloadingStrategy } from './services/preloading-strategy.service';
 
 const routes: Routes = [
   {
@@ -22,12 +23,19 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule)
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+    data: {
+      flags: 'a'
+    }
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: CustomPreloadingStrategy
+    })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
